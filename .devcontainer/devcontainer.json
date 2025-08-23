@@ -1,0 +1,16 @@
+{
+    "name": "ai-poc",
+    "build": {
+        "dockerfile": "./Dockerfile-mcp-server-poc",
+        "context": ".."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-containers"
+            ]
+        }
+    },
+    "postCreateCommand": "echo '🎉 Dev container created successfully!'",
+    "postStartCommand": "echo '🚀 Dev container started successfully!'"
+}   
