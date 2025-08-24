@@ -1,7 +1,7 @@
 {
     "name": "ai-poc",
     "build": {
-        "dockerfile": "./Dockerfile-mcp-server-poc",
+        "dockerfile": "./Dockerfile.mcp-server-poc",
         "context": ".."
     },
     "customizations": {
