@@ -1,8 +1,8 @@
 {
-    "name": "ai-poc",
-    "dockerComposeFile": "docker-compose-mcp-server-poc.yml",
+    "name": "MCP Server Development",
+    "dockerComposeFile": ["docker-compose-mcp-server-poc.yml"],
     "service": "mcp-server",
-    "runServices": ["postgres"],
+    "workspaceFolder": "/workspaces/ai-learning/mcp-server-poc",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
@@ -10,10 +10,15 @@
         "vscode": {
             "extensions": [
                 "ms-azuretools.vscode-containers",
-                "ms-azuretools.vscode-docker"
+                "ms-azuretools.vscode-docker",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-vscode.vscode-typescript-next"
             ]
         }
     },
-    "postCreateCommand": "echo '🎉 Dev container created successfully!'",
-    "postStartCommand": "echo '🚀 Dev container started successfully!'"
+    "forwardPorts": [3000, 5432],
+    "postCreateCommand": "cd /workspaces/ai-learning/mcp-server-poc && npm install",
+    "postStartCommand": "echo '🚀 Dev container started successfully!'",
+    "remoteUser": "node"
 }
