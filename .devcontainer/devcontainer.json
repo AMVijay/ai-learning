@@ -1,16 +1,19 @@
 {
     "name": "ai-poc",
-    "build": {
-        "dockerfile": "./Dockerfile.mcp-server-poc",
-        "context": ".."
+    "dockerComposeFile": "docker-compose-mcp-server-poc.yml",
+    "service": "mcp-server",
+    "runServices": ["postgres"],
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-azuretools.vscode-containers"
+                "ms-azuretools.vscode-containers",
+                "ms-azuretools.vscode-docker"
             ]
         }
     },
     "postCreateCommand": "echo '🎉 Dev container created successfully!'",
     "postStartCommand": "echo '🚀 Dev container started successfully!'"
-}   
+}

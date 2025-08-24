@@ -7,10 +7,10 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const dbConfig = {
-  user: process.env.POSTGRES_USER || "postgres",
+  user: process.env.POSTGRES_USER || "mcp_user",
   host: process.env.POSTGRES_HOST || "localhost",
-  database: process.env.POSTGRES_DATABASE || "postgres",
-  password: process.env.POSTGRES_PASSWORD || "",
+  database: process.env.POSTGRES_DB || "mcp_db",
+  password: process.env.POSTGRES_PASSWORD || "mcp_password",
   port: parseInt(process.env.POSTGRES_PORT || "5432"),
 };
 
