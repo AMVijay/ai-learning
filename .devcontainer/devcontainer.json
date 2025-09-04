@@ -1,24 +1,25 @@
 {
     "name": "MCP Server Development",
-    "dockerComposeFile": ["docker-compose-mcp-server-poc.yml"],
-    "service": "mcp-server",
-    "workspaceFolder": "/workspaces/ai-learning/mcp-server-poc",
-    "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "build": {
+        "dockerfile": "Dockerfile"
     },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-azuretools.vscode-containers",
-                "ms-azuretools.vscode-docker",
-                "dbaeumer.vscode-eslint",
-                "esbenp.prettier-vscode",
-                "ms-vscode.vscode-typescript-next"
-            ]
+    "remoteUser": "root",
+    "userEnvProbe": "none",
+    "forwardPorts": [5432],
+    "portsAttributes": {
+        "5432": {
+            "label": "PostgreSQL",
+            "onAutoForward": "notify"
         }
     },
-    "forwardPorts": [3000, 5432],
-    "postCreateCommand": "cd /workspaces/ai-learning/mcp-server-poc && npm install",
-    "postStartCommand": "echo '🚀 Dev container started successfully!'",
-    "remoteUser": "node"
+    "postCreateCommand": "/workspaces/ai-learning/.devcontainer/init-postgres.sh",
+    "initializeCommand": "echo 'Initializing dev container with PostgreSQL...'",
+    "features": {},
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    }
 }
